@@ -3,78 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Through 10 Steps</title>
+    <title>10-Step Click Challenge</title>
     <style>
-        /* Page styling */
+        /* General Page Styling */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #ffe6f2; /* Light pink background */
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
+            text-align: center;
+            color: #333;
         }
 
-        /* Image styling */
+        h1 {
+            color: #d63384; /* Darker pink for headings */
+            margin-top: 30px;
+            font-size: 2.5rem;
+        }
+
+        /* Image Styling */
         #main-image {
             width: 300px;
             height: auto;
-            margin-top: 50px;
+            margin: 30px auto 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: block;
         }
 
-        /* Button styling */
+        /* Button Styling */
         #click-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #ff66b2; /* Pink button */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         #click-button:hover {
-            background-color: #45a049;
+            background-color: #d63384; /* Darker pink */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Message styling */
+        #click-button:disabled {
+            background-color: #f0a1c3;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Message Styling */
         #message {
             margin-top: 20px;
-            font-size: 20px;
-            color: #333;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #d63384; /* Darker pink */
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <h1>Click Through the Steps</h1>
+    <h1>10-Step Click Challenge</h1>
+
     <!-- Image -->
-    <img id="main-image" src="https://via.placeholder.com/300" alt="Placeholder Image">
-    
+    <img id="main-image" src="https://via.placeholder.com/300/ff66b2/ffffff?text=Step+1" alt="Step Image">
+
     <!-- Button -->
     <div>
         <button id="click-button">Click Me!</button>
     </div>
 
     <!-- Message Area -->
-    <div id="message"></div>
+    <div id="message">Start the challenge by clicking the button!</div>
+
+    <!-- Footer -->
+    <footer>Enjoy the journey one click at a time!</footer>
 
     <script>
-        // JavaScript for button click
-        let count = 0; // Counter to keep track of clicks
+        let count = 0; // Counter
         const totalClicks = 10; // Total steps
         const messageDiv = document.getElementById("message");
         const button = document.getElementById("click-button");
+        const image = document.getElementById("main-image");
 
-        // Button click event listener
+        // Update the image source for each step (optional)
+        const images = [
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+1",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+2",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+3",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+4",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+5",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+6",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+7",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+8",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+9",
+            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+10",
+        ];
+
+        // Button click logic
         button.addEventListener("click", () => {
-            count++; // Increment the count
+            count++;
 
             if (count < totalClicks) {
                 messageDiv.textContent = `Step ${count}: Keep going!`;
+                image.src = images[count]; // Update image
             } else if (count === totalClicks) {
-                messageDiv.textContent = "Final Step: You made it!";
-                button.disabled = true; // Disable button after completion
-                button.style.backgroundColor = "#ccc";
+                messageDiv.textContent = "Final Step: You made it! 🎉";
+                image.src = "https://via.placeholder.com/300/d63384/ffffff?text=Finished!";
+                button.disabled = true; // Disable button
             }
         });
     </script>
