@@ -13,7 +13,7 @@
             padding: 0;
             text-align: center;
             color: #333;
-            transition: background-color 0.5s ease;
+            transition: background-color 0.5s ease; /* Smooth background color transition */
         }
 
         h1 {
@@ -30,7 +30,8 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: block;
-            transition: opacity 0.5s ease;
+            opacity: 0; /* Initial opacity for fade-in */
+            transition: opacity 0.5s ease; /* Smooth image fade-in effect */
         }
 
         /* Button Styling */
@@ -85,6 +86,8 @@
             font-size: 1.5rem;
             font-weight: 500;
             color: #d63384;
+            opacity: 0; /* Initial opacity for fade-in */
+            transition: opacity 0.5s ease; /* Smooth text fade-in effect */
         }
 
         /* Footer */
@@ -135,33 +138,43 @@
             "Attachment-1.jpg",
         ];
 
+        // Custom messages for each step
         const messages = [
             "This girl who is always so fitted up and pretty",
-            "Had me waiting outside of Barclays for 2 hours just for her (and I'd do it again)",
-            "She also had me from eating cereal by myself every day",
+            "Had me waiting outside of Barclays for 2 hours just for her (and I'd still do it again)",
+            "She also had me from eating cereal by myself every day...",
             "To sleeping wrapped up in her bed with a hello kitty blanket 💕",
-            "There's no other girl I would ever want, and I'm wondering if shes ready for a relationship..."
+            "There's no other girl I would ever want, and I'm wondering if she's ready for a relationship..."
         ];
 
         button.addEventListener("click", () => {
             count++;
-        
-            if (count < totalClicks) { 
-                messageDiv.textContent = messages[count];
-                image.src = images[count];
-            }
+            
+            // Smooth fade-out for existing content
+            image.style.opacity = 0;
+            messageDiv.style.opacity = 0;
 
-            if (count === totalClicks - 1) { 
-                button.style.display = "none";
-                choiceButtons.style.display = "block";
-            }
+            setTimeout(() => {
+                if (count < totalClicks) { 
+                    messageDiv.textContent = messages[count];
+                    image.src = images[count];
+                }
 
+                if (count === totalClicks - 1) { 
+                    button.style.display = "none";
+                    choiceButtons.style.display = "block";
+                }
+
+                // Smooth fade-in for updated content
+                image.style.opacity = 1;
+                messageDiv.style.opacity = 1;
+            }, 500); // Delay for transition effect
         });
 
         // Yes button logic (celebratory final step)
         yesButton.addEventListener("click", () => {
-            messageDiv.textContent = "🎉 So will you let me be your boyfriend 🎉";
-            image.src = "https://via.placeholder.com/300/28a745/ffffff?text=Success!";
+            messageDiv.textContent = "So will you let me be your boyfriend?";
+            image.src = "https://via.placeholder.com/300/28a745/ffffff?text=LOOK BEHIND YOU!";
             choiceButtons.style.display = "none";
             document.body.style.backgroundColor = "#e6ffe6"; // Light green background
         });
