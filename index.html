@@ -99,7 +99,7 @@
     <h1>Dear Vanessa</h1>
 
     <!-- Image -->
-    <img id="main-image" src="IMG_8314.jpg" alt="Step Image">
+    <img id="main-image" src="IMG_0617.jpg" alt="Step Image">
 
     <!-- Buttons -->
     <div>
@@ -118,7 +118,7 @@
 
     <script>
         let count = 0; // Counter
-        const totalClicks = 10;
+        const totalClicks = 5;
         const messageDiv = document.getElementById("message");
         const button = document.getElementById("click-button");
         const image = document.getElementById("main-image");
@@ -128,30 +128,34 @@
 
         // Images for each step
         const images = [
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+1",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+2",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+3",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+4",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+5",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+6",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+7",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+8",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+9",
+            "IMG_8314.jpg",
+            "74893187710__524DF2C7.jpg",
+            "IMG_5362.jpg",
+            "Attachment-1.jpg",
             "https://via.placeholder.com/300/d63384/ffffff?text=Finished!"
+        ];
+
+        const messages = [
+            "Step 1: A little something to make you smile 😊",
+            "Step 2: Remember that day? We were unstoppable! ✨",
+            "Step 3: Small moments make the biggest memories 🥰",
+            "Step 4: Look how far we’ve come! 💕",
+            "Step 5: Are you ready for the final moment? 🎉"
         ];
 
         button.addEventListener("click", () => {
             count++;
 
-            if (count < totalClicks - 1) { // Steps 1-8
-                messageDiv.textContent = `Step ${count}: Keep going!`;
+            if (count < totalClicks) { 
+                messageDiv.textContent = messages[count];
                 image.src = images[count];
-            } else if (count === totalClicks - 1) { // Step 9
-                messageDiv.textContent = "Step 9: Are you ready for the final step?";
-                image.src = images[count];
+            }
+
+            if (count === totalClicks - 1) { 
                 button.style.display = "none";
                 choiceButtons.style.display = "block";
             }
+
         });
 
         // Yes button logic (celebratory final step)
