@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Step Click Challenge</title>
+    <title>For Vanessa</title>
     <style>
         /* General Page Styling */
         body {
@@ -13,10 +13,11 @@
             padding: 0;
             text-align: center;
             color: #333;
+            transition: background-color 0.5s ease;
         }
 
         h1 {
-            color: #d63384; /* Darker pink for headings */
+            color: #d63384; /* Dark pink for headings */
             margin-top: 30px;
             font-size: 2.5rem;
         }
@@ -29,26 +30,47 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: block;
+            transition: opacity 0.5s ease;
         }
 
         /* Button Styling */
-        #click-button {
+        .button {
             padding: 15px 30px;
             font-size: 18px;
             font-weight: bold;
-            background-color: #ff66b2; /* Pink button */
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
+        #click-button {
+            background-color: #ff66b2;
+        }
+
         #click-button:hover {
-            background-color: #d63384; /* Darker pink */
+            background-color: #d63384;
             transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Yes/No Buttons */
+        #yes-button {
+            background-color: #28a745;
+        }
+
+        #yes-button:hover {
+            background-color: #218838;
+        }
+
+        #no-button {
+            background-color: #007bff;
+        }
+
+        #no-button:hover {
+            background-color: #0056b3;
         }
 
         #click-button:disabled {
@@ -62,7 +84,7 @@
             margin-top: 20px;
             font-size: 1.5rem;
             font-weight: 500;
-            color: #d63384; /* Darker pink */
+            color: #d63384;
         }
 
         /* Footer */
@@ -74,14 +96,18 @@
     </style>
 </head>
 <body>
-    <h1>10-Step Click Challenge</h1>
+    <h1>Dear Vanessa</h1>
 
     <!-- Image -->
     <img id="main-image" src="https://via.placeholder.com/300/ff66b2/ffffff?text=Step+1" alt="Step Image">
 
-    <!-- Button -->
+    <!-- Buttons -->
     <div>
-        <button id="click-button">Click Me!</button>
+        <button id="click-button" class="button">Click Me!</button>
+        <div id="choice-buttons" style="display: none;">
+            <button id="yes-button" class="button">Yes</button>
+            <button id="no-button" class="button">No</button>
+        </div>
     </div>
 
     <!-- Message Area -->
@@ -92,12 +118,15 @@
 
     <script>
         let count = 0; // Counter
-        const totalClicks = 10; // Total steps
+        const totalClicks = 10;
         const messageDiv = document.getElementById("message");
         const button = document.getElementById("click-button");
         const image = document.getElementById("main-image");
+        const choiceButtons = document.getElementById("choice-buttons");
+        const yesButton = document.getElementById("yes-button");
+        const noButton = document.getElementById("no-button");
 
-        // Update the image source for each step (optional)
+        // Images for each step
         const images = [
             "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+1",
             "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+2",
@@ -108,21 +137,38 @@
             "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+7",
             "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+8",
             "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+9",
-            "https://via.placeholder.com/300/ff66b2/ffffff?text=Step+10",
+            "https://via.placeholder.com/300/d63384/ffffff?text=Finished!"
         ];
 
-        // Button click logic
         button.addEventListener("click", () => {
             count++;
 
-            if (count < totalClicks) {
+            if (count < totalClicks - 1) { // Steps 1-8
                 messageDiv.textContent = `Step ${count}: Keep going!`;
-                image.src = images[count]; // Update image
-            } else if (count === totalClicks) {
-                messageDiv.textContent = "Final Step: You made it! 🎉";
-                image.src = "https://via.placeholder.com/300/d63384/ffffff?text=Finished!";
-                button.disabled = true; // Disable button
+                image.src = images[count];
+            } else if (count === totalClicks - 1) { // Step 9
+                messageDiv.textContent = "Step 9: Are you ready for the final step?";
+                image.src = images[count];
+                button.style.display = "none";
+                choiceButtons.style.display = "block";
             }
+        });
+
+        // Yes button logic (celebratory final step)
+        yesButton.addEventListener("click", () => {
+            messageDiv.textContent = "🎉 Final Step: Congratulations! You made it! 🎉";
+            image.src = "https://via.placeholder.com/300/28a745/ffffff?text=Success!";
+            choiceButtons.style.display = "none";
+            document.body.style.backgroundColor = "#e6ffe6"; // Light green background
+        });
+
+        // No button logic (moody ending)
+        noButton.addEventListener("click", () => {
+            messageDiv.textContent = "😞 Oh no! Maybe next time...";
+            image.src = "https://via.placeholder.com/300/007bff/ffffff?text=Moody+Blue";
+            choiceButtons.style.display = "none";
+            document.body.style.backgroundColor = "#0d1b2a"; // Dark blue background
+            document.body.style.color = "white"; // White text for better contrast
         });
     </script>
 </body>
