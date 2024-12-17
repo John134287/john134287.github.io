@@ -129,23 +129,23 @@
         // Images for each step
         const images = [
             "IMG_8314.jpg",
+            "IMG_0617.jpg",
             "74893187710__524DF2C7.jpg",
             "IMG_5362.jpg",
             "Attachment-1.jpg",
-            "https://via.placeholder.com/300/d63384/ffffff?text=Finished!"
         ];
 
         const messages = [
-            "Step 1: A little something to make you smile 😊",
-            "Step 2: Remember that day? We were unstoppable! ✨",
-            "Step 3: Small moments make the biggest memories 🥰",
-            "Step 4: Look how far we’ve come! 💕",
-            "Step 5: Are you ready for the final moment? 🎉"
+            "This girl who is always so fitted up and pretty",
+            "Had me waiting outside of Barclays for 2 hours just for her (and I'd do it again)",
+            "She also had me from eating cereal by myself every day",
+            "To sleeping wrapped up in her bed with a hello kitty blanket 💕",
+            "There's no other girl I would ever want, and I'm wondering if shes ready for a relationship..."
         ];
 
         button.addEventListener("click", () => {
             count++;
-
+        
             if (count < totalClicks) { 
                 messageDiv.textContent = messages[count];
                 image.src = images[count];
@@ -160,7 +160,7 @@
 
         // Yes button logic (celebratory final step)
         yesButton.addEventListener("click", () => {
-            messageDiv.textContent = "🎉 Final Step: Congratulations! You made it! 🎉";
+            messageDiv.textContent = "🎉 So will you let me be your boyfriend 🎉";
             image.src = "https://via.placeholder.com/300/28a745/ffffff?text=Success!";
             choiceButtons.style.display = "none";
             document.body.style.backgroundColor = "#e6ffe6"; // Light green background
@@ -168,7 +168,7 @@
 
         // No button logic (moody ending)
         noButton.addEventListener("click", () => {
-            messageDiv.textContent = "😞 Oh no! Maybe next time...";
+            messageDiv.textContent = "😞 I may be sad, but I'll be here waiting and patient for you whenever it feels Right!";
             image.src = "https://via.placeholder.com/300/007bff/ffffff?text=Moody+Blue";
             choiceButtons.style.display = "none";
             document.body.style.backgroundColor = "#0d1b2a"; // Dark blue background
