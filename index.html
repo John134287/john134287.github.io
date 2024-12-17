@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Through 10 Steps</title>
+    <style>
+        /* Page styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+        }
 
+        /* Image styling */
+        #main-image {
+            width: 300px;
+            height: auto;
+            margin-top: 50px;
+        }
+
+        /* Button styling */
+        #click-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #click-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Message styling */
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
 <body>
-  <h1>John Ovalles</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
-</body>
+    <h1>Click Through the Steps</h1>
+    <!-- Image -->
+    <img id="main-image" src="https://via.placeholder.com/300" alt="Placeholder Image">
+    
+    <!-- Button -->
+    <div>
+        <button id="click-button">Click Me!</button>
+    </div>
 
+    <!-- Message Area -->
+    <div id="message"></div>
+
+    <script>
+        // JavaScript for button click
+        let count = 0; // Counter to keep track of clicks
+        const totalClicks = 10; // Total steps
+        const messageDiv = document.getElementById("message");
+        const button = document.getElementById("click-button");
+
+        // Button click event listener
+        button.addEventListener("click", () => {
+            count++; // Increment the count
+
+            if (count < totalClicks) {
+                messageDiv.textContent = `Step ${count}: Keep going!`;
+            } else if (count === totalClicks) {
+                messageDiv.textContent = "Final Step: You made it!";
+                button.disabled = true; // Disable button after completion
+                button.style.backgroundColor = "#ccc";
+            }
+        });
+    </script>
+</body>
 </html>
